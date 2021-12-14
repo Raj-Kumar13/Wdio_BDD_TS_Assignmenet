@@ -1,0 +1,20 @@
+{
+    "credentials":{
+    "UserName": "Admin",
+    "Password": "admin123"
+    },
+    "searchUser":{
+        "Username":"Admin",
+        "UserRole":"Admin",
+        "EmployeeName":"Ann Neon Moon",
+        "status":"Enabled"
+    },
+    "addUser":{
+        "userRole":"ESS",
+        "EmployeeName":"Admin A",
+        
+        "Status":"Enabled",
+        "Password":"mohan123"
+    }
+
+}
