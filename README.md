@@ -35,7 +35,7 @@ This repository deals with `Orange HR Management` portal we used `webdriverIO-v7
 ## 🚀 UsageGetting Started
 Clone Repository
 ```bash
-1. git clone 
+1. git clone https://github.com/Raj-Kumar13/Wdio_BDD_TS_Assignmenet.git
 ```
 
 Install the dependencies:
