@@ -1,93 +1,93 @@
 import Data from "../TestData/Data.json"
 import faker from 'faker'
-class AdminPage{
- 
-    get adminButton(){
+class AdminPage {
+
+    get adminButton() {
         return $("//a[@id='menu_admin_viewAdminModule']/b")
     }
-    async clickAdminButton(){
+    async clickAdminButton() {
         await this.adminButton.click()
     }
-    get systemUserUsernameElement(){
+    get systemUserUsernameElement() {
         return $("#searchSystemUser_userName")
     }
-    get systemUserUserRoleElement(){
+    get systemUserUserRoleElement() {
         return $("#searchSystemUser_userType")
     }
-    get systemUserEmployeeNameElement(){
+    get systemUserEmployeeNameElement() {
         return $("//input[@id='searchSystemUser_employeeName_empName']")
     }
-    get systemUserStatus(){
+    get systemUserStatus() {
         return $("//select[@id='searchSystemUser_status']")
     }
 
-    async enterDetails(){
+    async enterDetails() {
         await this.systemUserUsernameElement.setValue(Data.searchUser.Username);
         await this.systemUserUserRoleElement.selectByVisibleText(Data.searchUser.UserRole);
         await this.systemUserEmployeeNameElement.setValue(Data.searchUser.EmployeeName);
         await this.systemUserStatus.selectByVisibleText(Data.searchUser.status);
 
     }
-    get searchElement(){
+    get searchElement() {
         return $(".searchbutton")
     }
 
-    async clickSearch(){
+    async clickSearch() {
         await this.searchElement.click();
     }
-    get expectedUsernameElement(){
+    get expectedUsernameElement() {
         return $("//td[@class='left'][1]")
     }
-    get expectUserRoleElement(){
-        return $("//td[@class='left'][2]"); 
+    get expectUserRoleElement() {
+        return $("//td[@class='left'][2]");
     }
-    get expectedEmployeeNameElemente(){
+    get expectedEmployeeNameElemente() {
         return $("//td[@class='left'][3]")
     }
-    get expectedStatusElemente(){
+    get expectedStatusElemente() {
         return $("//td[@class='left'][4]")
     }
 
-    get resetButtonElement(){
+    get resetButtonElement() {
         return $("#resetBtn");
     }
-    async clickResetButton(){
-       await this.resetButtonElement.click();    
+    async clickResetButton() {
+        await this.resetButtonElement.click();
     }
 
-    get addButtonElement(){
+    get addButtonElement() {
         return $("#btnAdd")
     }
-    async clickAddButton(){
+    async clickAddButton() {
         await this.addButtonElement.click();
     }
-    get addUserHeaderElement(){
+    get addUserHeaderElement() {
         return $("#UserHeading")
     }
 
-    get addUserUserRoleElement(){
+    get addUserUserRoleElement() {
         return $("#systemUser_userType")
     }
-    get addUserEmployeeNameElement(){
+    get addUserEmployeeNameElement() {
         return $("//input[@id='systemUser_employeeName_empName']")
     }
-    get addUserUsername(){
+    get addUserUsername() {
         return $("//input[@id='systemUser_userName']")
     }
-    get addUserStatus(){
+    get addUserStatus() {
         return $("//select[@id='systemUser_status']")
     }
-    get addUserPassword(){
+    get addUserPassword() {
         return $("//input[@id='systemUser_password']")
     }
-    get addUserConfirmPassword(){
+    get addUserConfirmPassword() {
         return $("//input[@id='systemUser_confirmPassword']")
     }
-    get saveButtonElement(){
+    get saveButtonElement() {
         return $("#btnSave")
     }
 
-    async addUserDetails(){
+    async addUserDetails() {
         await this.addUserUserRoleElement.click()
         await this.addUserUserRoleElement.selectByVisibleText(Data.addUser.userRole)
         await this.addUserEmployeeNameElement.setValue(Data.addUser.EmployeeName)
@@ -98,14 +98,14 @@ class AdminPage{
         await this.addUserConfirmPassword.setValue(Data.addUser.Password)
     }
 
-    async clickSubmitButton(){
+    async clickSubmitButton() {
         await this.saveButtonElement.click()
     }
 
-    get successfullySavedMassageElement(){
-        return $("should display Successfully Saved");
+    get successfullySavedMassageElement() {
+        return $("//div[@class='message success fadable']");
     }
-    get systemUserHeaderElement(){
+    get systemUserHeaderElement() {
         return $('//a[@title="Hide Options"]')
     }
 }

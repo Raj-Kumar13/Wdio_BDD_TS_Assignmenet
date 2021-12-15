@@ -1,6 +1,6 @@
 Feature: Automate Orange HRM Portal
 
-    Feature Description
+
 
     Scenario: user Log in with a valid credentials
         Given I should landing on "https://opensource-demo.orangehrmlive.com/" Page
@@ -21,5 +21,13 @@ Feature: Automate Orange HRM Portal
         Then Should be navigated to "Add User"
         When fill the Required Elements Like User Role,Employee Name,Username,Status,Password,Confirm Password
         And click submit button
-       # Then should display Successfully Saved
-        #Then should be navigated to System Users Page
+        Then should display Successfully Saved and navigated to "viewSystemUsers" page
+
+
+    Scenario: Add Employee to Employee List
+        When Click on PIM button
+        And Click on Add Employee button
+        Then Should be landing on "addEmployee" page
+        When fill the Required details like FirstName,MiddleName,LastName,Photograph
+
+
