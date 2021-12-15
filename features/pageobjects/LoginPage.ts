@@ -1,4 +1,5 @@
 import Data from "../TestData/Data.json";
+import faker from 'faker';
 class LoginPage{
     async openPage(url:string){
         await browser.url(url);
