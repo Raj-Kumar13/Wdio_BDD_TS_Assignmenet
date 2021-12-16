@@ -16,9 +16,18 @@
         "Status":"Enabled",
         "Password":"mohan123"
     },
+    "createLogingDetails":{
+        "name":"mohan",
+        "key":"value",
+        "value":"Enabled"
+    },
     "LeaveDates":{
         "From":"2021-12-10",
-        "To":"2021-12-16",
+        "To":{
+            "month":"Dec",
+            "year":"2021",
+            "day":"17"
+        },
         "Employee":"Admin A",
         "subUnit":"Administration"
     }

@@ -12,27 +12,45 @@ class LeavesPage{
     get toDateElement(){
         return $("//input[@name='leaveList[calToDate]']")
     }
-    async fillDates(){
-      await this.fromDateElement.setValue(Data.LeaveDates.From)
-      await this.toDateElement.setValue(Data.LeaveDates.To)    
+    get monthElement(){
+        return $("//select[@class='ui-datepicker-month']")
     }
+    get yearElement(){
+        return $("//select[@class='ui-datepicker-year']")
+    }
+    get dayElement(){
+        const day =Data.LeaveDates.To.day
+        return $("//a[text()="+day+"]")
+    }
+    async fillDates(fromDate,toMonth,toYear){
+      await this.fromDateElement.setValue(fromDate )
+
+      await this.monthElement.selectByVisibleText(toMonth )
+      await this.yearElement.selectByVisibleText(toYear )
+      await this.dayElement.click()
+      //await this.toDateElement.setValue(toDate)   
+    }
+    
     get showLeaveWithStatusCheckBox(){
-     return $("#leaveList_chkSearchFilter_checkboxgroup_allcheck")
+        //return $("#leaveList_chkSearchFilter_3")
+        return $("#leaveList_chkSearchFilter_checkboxgroup_allcheck")
     }
     async clickStatusCheckBox(){
+        await this.showLeaveWithStatusCheckBox.scrollIntoView()
         await this.showLeaveWithStatusCheckBox.click()
     }
     get employeeNameElement(){
         return $("//input[@id='leaveList_txtEmployee_empName']")
     }
-    async setEmployeeName(){
-        await this.employeeNameElement.setValue(Data.LeaveDates.Employee)
+    async setEmployeeName(employeeName){
+        await this.employeeNameElement.scrollIntoView()
+        await this.employeeNameElement.setValue(employeeName )
     }
     get subUnitElement(){
         return $("//select[@name='leaveList[cmbSubunit]']")
     }
-    async setSubUnit(){
-        await this.subUnitElement.selectByVisibleText(Data.LeaveDates.subUnit)
+    async setSubUnit(subUnit){
+        await this.subUnitElement.selectByVisibleText(subUnit )
     }
     get includePastEmployees(){
         return $("//input[@name='leaveList[cmbWithTerminated]']")
@@ -44,6 +62,7 @@ class LeavesPage{
         return $("//input[@name='btnSearch']")
     }
     async clickSearchButton(){
+        await this.searchButtonElement.scrollIntoView()
         await this.searchButtonElement.click()
     }
 }

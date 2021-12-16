@@ -24,10 +24,10 @@ class PIMPage{
     get lastNameElement(){
         return $("#lastName")
     }
-    async fillFullName(){
-        await this.firstNameElement.setValue(faker.name.firstName());
-        await this.middleNameElement.setValue(faker.name.middleName());
-        await this.lastNameElement.setValue(faker.name.lastName())
+    async fillFullName(firstName,middleName,lastName){
+        await this.firstNameElement.setValue(firstName );
+        await this.middleNameElement.setValue(middleName );
+        await this.lastNameElement.setValue(lastName )
     }
     get photoUploadElemnet(){
         return $("#photofile")
@@ -57,12 +57,11 @@ class PIMPage{
         return $("//select[@name='status']")
     }
 
-    async fillCreateLoginDetails(){
-        await this.userNameElement.setValue(faker.name.firstName(8))
-        const password = faker.internet.password();
+    async fillCreateLoginDetails(userName,password,key,value){
+        await this.userNameElement.setValue(userName)
         await this.userPasswordElement.setValue(password)
         await this.confirmPasswordElement.setValue(password)
-        await this.statusDropDownElemnet.selectByAttribute("value","Enabled")
+        await this.statusDropDownElemnet.selectByAttribute(key,value)
     }
     get saveBottonElement(){
         return $("#btnSave")

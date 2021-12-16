@@ -17,9 +17,9 @@ class LoginPage{
         return $("//div[@class='textInputContainer']/input[@name='txtPassword']");
     }
 
-    async enterCredintials(){
-        await this.userNameElement.setValue(Data.credentials.UserName);
-        await this.passwordElement.setValue(Data.credentials.Password);
+    async enterCredintials(name:string,password){
+        await this.userNameElement.setValue(name);
+        await this.passwordElement.setValue(password);
     }
 
     get loginButtonElement(){
