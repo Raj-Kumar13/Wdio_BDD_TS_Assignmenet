@@ -21,11 +21,11 @@ class AdminPage {
         return $("//select[@id='searchSystemUser_status']")
     }
 
-    async enterDetails() {
-        await this.systemUserUsernameElement.setValue(Data.searchUser.Username);
-        await this.systemUserUserRoleElement.selectByVisibleText(Data.searchUser.UserRole);
-        await this.systemUserEmployeeNameElement.setValue(Data.searchUser.EmployeeName);
-        await this.systemUserStatus.selectByVisibleText(Data.searchUser.status);
+    async enterDetails(userName,userRole,employeeName,status) {
+        await this.systemUserUsernameElement.setValue(userName );
+        await this.systemUserUserRoleElement.selectByVisibleText(userRole );
+        await this.systemUserEmployeeNameElement.setValue(employeeName );
+        await this.systemUserStatus.selectByVisibleText(status );
 
     }
     get searchElement() {
@@ -87,15 +87,15 @@ class AdminPage {
         return $("#btnSave")
     }
 
-    async addUserDetails() {
+    async addUserDetails(userRole,employeeName,userName,status,password) {
         await this.addUserUserRoleElement.click()
-        await this.addUserUserRoleElement.selectByVisibleText(Data.addUser.userRole)
-        await this.addUserEmployeeNameElement.setValue(Data.addUser.EmployeeName)
-        await this.addUserUsername.setValue(faker.internet.userName())
+        await this.addUserUserRoleElement.selectByVisibleText(userRole )
+        await this.addUserEmployeeNameElement.setValue(employeeName )
+        await this.addUserUsername.setValue(userName )
         await this.addUserStatus.click()
-        await this.addUserStatus.selectByVisibleText(Data.addUser.Status)
-        await this.addUserPassword.setValue(Data.addUser.Password);
-        await this.addUserConfirmPassword.setValue(Data.addUser.Password)
+        await this.addUserStatus.selectByVisibleText(status )
+        await this.addUserPassword.setValue(password );
+        await this.addUserConfirmPassword.setValue(password )
     }
 
     async clickSubmitButton() {
