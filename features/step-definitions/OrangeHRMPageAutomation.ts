@@ -1,8 +1,10 @@
 import { Given, When, Then } from "@cucumber/cucumber";
 import AdminPage from "../pageobjects/AdminPage";
+import LeavesPage from "../pageobjects/LeavesPage";
 import LoginPage from "../pageobjects/LoginPage";
 import PIMPage from "../pageobjects/PIMPage";
 import Data from "../TestData/Data.json";
+
 
 Given("I should landing on {string} Page", async (url) => {
     await LoginPage.openPage(url);
@@ -77,5 +79,35 @@ Then("Should be landing on {string} page", async (urlElemente) => {
 })
 When("fill the Required details like FirstName,MiddleName,LastName,Photograph", async () => {
     await PIMPage.fillFullName()
+    await PIMPage.uploadFile()
+})
+When("Click on checkBox to enable login credentials for the Employee" , async () => {
+    await PIMPage.clickCheckBox()
+})
+When("fill the required information to create Login credentials for the Employee", async () =>{
+    await PIMPage.fillCreateLoginDetails()    
+})
+When("click save button", async () =>{
+    await PIMPage.clickSaveButton()
+    await browser.pause(3000)
+})
+Then("Should navigated to {string} Page", async (header) =>{
+    await expect(PIMPage.personDetailsHeaderElement).toHaveTextContaining(header);
+})
 
+When("click on Leave button on meanu bar", async () => {
+  await LeavesPage.clickLeaveButton()
+})
+Then("should be land on {string} page", async (urlElement) =>{
+    await expect(browser).toHaveUrlContaining(urlElement)
+})
+When("fill the required details from, To,Show Leave with Status,Employee sub unit", async () =>{
+    await LeavesPage.fillDates()
+    await  LeavesPage.clickStatusCheckBox()
+    await LeavesPage.setEmployeeName()
+    await LeavesPage.setSubUnit()
+    await LeavesPage.clickCheckBoxPastEmployess()
+})
+When("click search button", async () =>{
+    await LeavesPage.clickSearchButton()
 })

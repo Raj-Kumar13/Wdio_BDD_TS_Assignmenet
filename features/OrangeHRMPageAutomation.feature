@@ -2,7 +2,7 @@ Feature: Automate Orange HRM Portal
 
 
 
-    Scenario: user Log in with a valid credentials
+    Scenario: user should Log-in with a valid credentials
         Given I should landing on "https://opensource-demo.orangehrmlive.com/" Page
         Then It should display "LOGIN Panel" on landing page
         When enter valid UserName and Password in both elements
@@ -24,10 +24,18 @@ Feature: Automate Orange HRM Portal
         Then should display Successfully Saved and navigated to "viewSystemUsers" page
 
 
-    Scenario: Add Employee to Employee List
+    Scenario: Add Employee to Employee List and create his login credentials
         When Click on PIM button
         And Click on Add Employee button
         Then Should be landing on "addEmployee" page
         When fill the Required details like FirstName,MiddleName,LastName,Photograph
+        And Click on checkBox to enable login credentials for the Employee
+        And fill the required information to create Login credentials for the Employee
+        And click save button
+        Then Should navigated to "Personal Details" Page
 
-
+    Scenario: User use to view Leave List
+    When click on Leave button on meanu bar
+    Then should be land on "viewLeaveList" page
+    When fill the required details from, To,Show Leave with Status,Employee sub unit
+    And click search button

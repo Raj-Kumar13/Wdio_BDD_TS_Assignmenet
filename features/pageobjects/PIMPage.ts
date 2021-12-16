@@ -1,5 +1,5 @@
 import faker from 'faker';
-
+const path =require('path');
 class PIMPage{
 
    
@@ -32,8 +32,49 @@ class PIMPage{
     get photoUploadElemnet(){
         return $("#photofile")
     }
-  // async uploadFile(){
-  //      await this.photoUploadElemnet.addValue(`D:\CG_VSCode_WDIO\WebDriverIOBDDTs_Assignement\features\TestData`)
-  //  }
+  async uploadFile(){
+        const filePath = path.join(__dirname,"../TestData/demo.jpg")    
+        const remoteFilePath = await browser.uploadFile(filePath)
+        await this.photoUploadElemnet.setValue(remoteFilePath);
+        
+    }
+    get checkBoxElement(){
+        return $('//input[@name="chkLogin"]')
+    }
+    async clickCheckBox(){
+        await this.checkBoxElement.click()
+    }
+    get userNameElement(){
+        return $("//input[@name='user_name']")
+    }
+    get userPasswordElement(){
+        return $("//input[@name='user_password']")
+    }
+    get confirmPasswordElement(){
+        return $("//input[@name='re_password']")
+    }
+    get statusDropDownElemnet(){
+        return $("//select[@name='status']")
+    }
+
+    async fillCreateLoginDetails(){
+        await this.userNameElement.setValue(faker.name.firstName(8))
+        const password = faker.internet.password();
+        await this.userPasswordElement.setValue(password)
+        await this.confirmPasswordElement.setValue(password)
+        await this.statusDropDownElemnet.selectByAttribute("value","Enabled")
+    }
+    get saveBottonElement(){
+        return $("#btnSave")
+    }
+    async  clickSaveButton(){
+        await this.saveBottonElement.click();
+        
+    }
+
+    get personDetailsHeaderElement(){
+        return $("//h1[text()='Personal Details']")
+    }
+
 }
 export default new PIMPage
