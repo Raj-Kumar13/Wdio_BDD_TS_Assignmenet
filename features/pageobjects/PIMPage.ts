@@ -67,6 +67,7 @@ class PIMPage{
         return $("#btnSave")
     }
     async  clickSaveButton(){
+        await this.saveBottonElement.scrollIntoView()
         await this.saveBottonElement.click();
         
     }
