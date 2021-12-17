@@ -50,20 +50,16 @@ export const config: WebdriverIO.Config = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-    
-       
-        maxInstances: 5,
+        maxInstances: 2,
         browserName: 'chrome',
         acceptInsecureCerts: true
-        
     },
-  //  {
-      //  maxInstances: 2,
-      //  browserName: 'MicrosoftEdge',
-      //  acceptInsecureCerts: true
-
-//    }
-],
+    {
+        maxInstances: 2,
+       browserName: 'MicrosoftEdge',
+       acceptInsecureCerts: true
+    }
+    ],
     //
     // ===================
     // Test Configurations
@@ -111,8 +107,8 @@ export const config: WebdriverIO.Config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-   //services: ['selenium-stadalone'],
-    services: ['ChromeDriver'],
+   services: ['selenium-stadalone'],
+    //services: ['ChromeDriver'],
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: https://webdriver.io/docs/frameworks
@@ -262,8 +258,11 @@ export const config: WebdriverIO.Config = {
      * @param {number}             result.duration  duration of scenario in milliseconds
      * @param {Object}             context          Cucumber World object
      */
-    // afterStep: function (step, scenario, result, context) {
-    // },
+ afterStep: async function (step, scenario, result, context) {
+     if(!result.passed){
+         await browser.takeScreenshot();
+     } 
+},
     /**
      *
      * Runs after a Cucumber Scenario.
@@ -282,8 +281,8 @@ export const config: WebdriverIO.Config = {
      * @param {String}                   uri      path to feature file
      * @param {GherkinDocument.IFeature} feature  Cucumber feature object
      */
-    // afterFeature: function (uri, feature) {
-    // },
+     //afterFeature: function (uri, feature) {
+     //},
     
     /**
      * Runs after a WebdriverIO command gets executed
