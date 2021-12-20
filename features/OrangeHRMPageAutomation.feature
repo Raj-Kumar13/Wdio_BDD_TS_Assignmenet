@@ -15,6 +15,7 @@ Feature: Automate Orange HRM Portal
         When fill Username,User Role,Employee Name,status Elements and click Search Button
         Then should display the Matched User details
         When click on reset button
+        Then UserName and EmployeeName element should be empty
 
     Scenario: Add System User
         When Click on Add button
@@ -35,7 +36,7 @@ Feature: Automate Orange HRM Portal
         Then Should navigated to "Personal Details" Page
 
     Scenario: User use to view Leave List
-    When click on Leave button on meanu bar
-    Then should be land on "viewLeaveList" page
-    When fill the required details from, To,Show Leave with Status,Employee sub unit
-    And click search button
+        When click on Leave button on meanu bar
+        Then should be land on "viewLeaveList" page
+        When fill the required details from, To,Show Leave with Status,Employee sub unit
+        And click search button
