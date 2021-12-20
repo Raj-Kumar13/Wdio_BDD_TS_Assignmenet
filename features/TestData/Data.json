@@ -16,7 +16,7 @@
         "Status":"Enabled",
         "Password":"mohan123"
     },
-    "createLogingDetails":{
+    "createLoginDetails":{
         "name":"mohan",
         "key":"value",
         "value":"Enabled"

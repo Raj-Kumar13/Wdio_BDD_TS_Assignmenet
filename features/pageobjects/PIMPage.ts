@@ -1,5 +1,6 @@
 import faker from 'faker';
 import {addLogs} from '../Utils/Commands'
+import Data from '../TestData/Data.json'
 const path =require('path');
 class PIMPage{
 
@@ -27,13 +28,13 @@ class PIMPage{
     get lastNameElement(){
         return $("#lastName")
     }
-    async fillFullName(firstName,middleName,lastName){
-        await this.firstNameElement.setValue(firstName );
-        addLogs(`Entered First Name value : ${firstName}`)
-        await this.middleNameElement.setValue(middleName );
-        addLogs(`Entered middle Name value : ${middleName}`)
-        await this.lastNameElement.setValue(lastName )
-        addLogs(`Entered Last Name value : ${lastName}`)
+    async fillFullName(name:{firstName,middleName,lastName}){
+        await this.firstNameElement.setValue(name.firstName() );
+        addLogs(`Entered First Name value : ${name.firstName()}`)
+        await this.middleNameElement.setValue(name.middleName() );
+        addLogs(`Entered middle Name value : ${name.middleName()}`)
+        await this.lastNameElement.setValue(name.lastName() )
+        addLogs(`Entered Last Name value : ${name.lastName()}`)
     }
     get photoUploadElemnet(){
         return $("#photofile")
@@ -66,15 +67,15 @@ class PIMPage{
         return $("//select[@name='status']")
     }
 
-    async fillCreateLoginDetails(userName,password,key,value){
+    async fillCreateLoginDetails(userName,password,createLoginDetails:{key,value}){
         await this.userNameElement.setValue(userName)
         addLogs(`Entered User Name value : ${userName}`)
         await this.userPasswordElement.setValue(password)
         addLogs(`Entered Password value value : ${password}`)
         await this.confirmPasswordElement.setValue(password)
         addLogs(`Entered Confirm Password value : ${password}`)
-        await this.statusDropDownElemnet.selectByAttribute(key,value)
-        addLogs(`Select DropDown value : ${value}`)
+        await this.statusDropDownElemnet.selectByAttribute(createLoginDetails.key,createLoginDetails.value)
+        addLogs(`Select DropDown value : ${createLoginDetails.value}`)
     }
     get saveBottonElement(){
         return $("#btnSave")
@@ -91,4 +92,4 @@ class PIMPage{
     }
 
 }
-export default new PIMPage
+export default new PIMPage();
