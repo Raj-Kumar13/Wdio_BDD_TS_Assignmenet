@@ -5,6 +5,7 @@ import LoginPage from "../pageobjects/LoginPage";
 import PIMPage from "../pageobjects/PIMPage";
 import Data from "../TestData/Data.json";
 import faker from 'faker'
+import report from  '@wdio/allure-reporter'
 
 
 Given("I should landing on {string} Page", async (url) => {
@@ -14,7 +15,7 @@ Then("It should display {string} on landing page", async (header) => {
     await expect(LoginPage.loginPanelHeaderElement).toHaveTextContaining(header);
 })
 When("enter valid UserName and Password in both elements", async () => {
-    await LoginPage.enterCredintials(Data.credentials.UserName, Data.credentials.Password);
+    await LoginPage.enterCredintials(Data.credentials);
 })
 When("click LOGIN button", async () => {
     await LoginPage.clickLoginButton();
@@ -31,7 +32,7 @@ Then("Should be navigated to {string} Page", async (urlElement) => {
     await expect(browser).toHaveUrlContaining(urlElement);
 })
 When("fill Username,User Role,Employee Name,status Elements and click Search Button", async () => {
-    await AdminPage.enterDetails(Data.searchUser.Username,Data.searchUser.UserRole,Data.searchUser.EmployeeName,Data.searchUser.status);
+    await AdminPage.enterDetails(Data.searchUser);
     await AdminPage.clickSearch();
 })
 Then("should display the Matched User details", async () => {
@@ -54,7 +55,7 @@ Then("Should be navigated to {string}", async (header) => {
     await expect(AdminPage.addUserHeaderElement).toHaveTextContaining(header);
 })
 When("fill the Required Elements Like User Role,Employee Name,Username,Status,Password,Confirm Password", async () => {
-    await AdminPage.addUserDetails(Data.addUser.userRole,Data.addUser.EmployeeName,faker.internet.userName(),Data.addUser.Status,Data.addUser.Password)
+    await AdminPage.addUserDetails(Data.addUser,faker.internet.userName())
 })
 When("click submit button", async () => {
     await AdminPage.clickSubmitButton()
@@ -64,7 +65,7 @@ When("click submit button", async () => {
 Then("should display Successfully Saved and navigated to {string} page", async (urlElement) => {
     await AdminPage.successfullySavedMassageElement.waitForDisplayed()
     await expect(AdminPage.successfullySavedMassageElement).toHaveTextContaining("Successfully Saved")
-
+    await expect(browser).toHaveUrlContaining(urlElement)
 })
 
 
@@ -104,10 +105,10 @@ Then("should be land on {string} page", async (urlElement) =>{
     await expect(browser).toHaveUrlContaining(urlElement)
 })
 When("fill the required details from, To,Show Leave with Status,Employee sub unit", async () =>{
-    await LeavesPage.fillDates(Data.LeaveDates.From,Data.LeaveDates.To.month,Data.LeaveDates.To.year)
+    await LeavesPage.fillDates(Data.LeaveDates)
    // await LeavesPage.clickDateElement()
     await  LeavesPage.clickStatusCheckBox()
-    await LeavesPage.setEmployeeName(Data.LeaveDates.Employee)
+    await LeavesPage.setEmployeeName(Data.LeaveDates.EmployeeName)
     await LeavesPage.setSubUnit(Data.LeaveDates.subUnit)
     await LeavesPage.clickCheckBoxPastEmployess()
 })
