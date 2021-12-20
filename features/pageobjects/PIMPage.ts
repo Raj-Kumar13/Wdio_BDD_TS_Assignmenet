@@ -1,4 +1,5 @@
 import faker from 'faker';
+import {addLogs} from '../Utils/Commands'
 const path =require('path');
 class PIMPage{
 
@@ -11,9 +12,11 @@ class PIMPage{
     }
     async clickOnPIMButton(){
         await this.pimHeaderElement.click()
+        addLogs(`Click PIM Button ${await this.pimHeaderElement.selector}`)
     }
     async ClickAddEmployeeElement(){
         await this.addEmployeeElement.click()
+        addLogs(`Click Add Employee Button ${await this.addEmployeeElement.selector}`)
     }
     get firstNameElement(){
         return $("#firstName")
@@ -26,8 +29,11 @@ class PIMPage{
     }
     async fillFullName(firstName,middleName,lastName){
         await this.firstNameElement.setValue(firstName );
+        addLogs(`Entered First Name value : ${firstName}`)
         await this.middleNameElement.setValue(middleName );
+        addLogs(`Entered middle Name value : ${middleName}`)
         await this.lastNameElement.setValue(lastName )
+        addLogs(`Entered Last Name value : ${lastName}`)
     }
     get photoUploadElemnet(){
         return $("#photofile")
@@ -35,7 +41,9 @@ class PIMPage{
   async uploadFile(){
         const filePath = path.join(__dirname,"../TestData/demo.jpg")    
         const remoteFilePath = await browser.uploadFile(filePath)
+        
         await this.photoUploadElemnet.setValue(remoteFilePath);
+        addLogs(`File to be Uploaded value : ${remoteFilePath}`)
         
     }
     get checkBoxElement(){
@@ -43,6 +51,7 @@ class PIMPage{
     }
     async clickCheckBox(){
         await this.checkBoxElement.click()
+        addLogs(`Clicked CheckBox Button element value : ${await this.checkBoxElement.selector}`)
     }
     get userNameElement(){
         return $("//input[@name='user_name']")
@@ -59,9 +68,13 @@ class PIMPage{
 
     async fillCreateLoginDetails(userName,password,key,value){
         await this.userNameElement.setValue(userName)
+        addLogs(`Entered User Name value : ${userName}`)
         await this.userPasswordElement.setValue(password)
+        addLogs(`Entered Password value value : ${password}`)
         await this.confirmPasswordElement.setValue(password)
+        addLogs(`Entered Confirm Password value : ${password}`)
         await this.statusDropDownElemnet.selectByAttribute(key,value)
+        addLogs(`Select DropDown value : ${value}`)
     }
     get saveBottonElement(){
         return $("#btnSave")
@@ -69,6 +82,7 @@ class PIMPage{
     async  clickSaveButton(){
         await this.saveBottonElement.scrollIntoView()
         await this.saveBottonElement.click();
+        addLogs(`Click save Button element value : ${await this.saveBottonElement.selector}`)
         
     }
 
