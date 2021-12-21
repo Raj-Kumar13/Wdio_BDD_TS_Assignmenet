@@ -1,5 +1,3 @@
-import Data from "../TestData/Data.json";
-import faker from 'faker';
 
 import {addLogs} from '../Utils/Commands'
 class LoginPage{

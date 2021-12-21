@@ -1,6 +1,7 @@
-import faker from 'faker';
+import { uploadFileDetails } from './../Utils/FileUploadCommands';
+
 import {addLogs} from '../Utils/Commands'
-import Data from '../TestData/Data.json'
+
 const path =require('path');
 class PIMPage{
 
@@ -39,12 +40,14 @@ class PIMPage{
     get photoUploadElemnet(){
         return $("#photofile")
     }
-  async uploadFile(){
-        const filePath = path.join(__dirname,"../TestData/demo.jpg")    
-        const remoteFilePath = await browser.uploadFile(filePath)
-        
-        await this.photoUploadElemnet.setValue(remoteFilePath);
-        addLogs(`File to be Uploaded value : ${remoteFilePath}`)
+  async uploadFile(fileDirectoryPath : string){
+        //console.log("-------------------------------------------------------------------"+path)
+       // const filePath = path.join(__dirname,"../TestData/demo.jpg")    
+       // const remoteFilePath = await browser.uploadFile(filePath)
+        // addLogs(`File to be Uploaded value : ${remoteFilePath}`)
+        await this.photoUploadElemnet.setValue(await uploadFileDetails(fileDirectoryPath));
+       
+       addLogs(`File to be Uploaded value : ${await uploadFileDetails(fileDirectoryPath)}`)
         
     }
     get checkBoxElement(){
