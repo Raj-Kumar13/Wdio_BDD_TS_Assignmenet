@@ -14,7 +14,8 @@ Then("Should be landing on {string} page", async (urlElemente) => {
 })
 When("fill the Required details like FirstName,MiddleName,LastName,Photograph", async () => {
     await PIMPage.fillFullName(faker.name)
-    await PIMPage.uploadFile()
+    const fileDirectoryPath :string = "../TestData/demo.jpg";
+    await PIMPage.uploadFile(fileDirectoryPath)
 })
 When("Click on checkBox to enable login credentials for the Employee" , async () => {
     await PIMPage.clickCheckBox()

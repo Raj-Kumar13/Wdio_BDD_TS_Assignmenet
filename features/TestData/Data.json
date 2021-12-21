@@ -11,7 +11,7 @@
     },
     "addUser":{
         "userRole":"ESS",
-        "EmployeeName":"Admin A",
+        "EmployeeName":"Orange Test",
         
         "Status":"Enabled",
         "Password":"mohan123"
