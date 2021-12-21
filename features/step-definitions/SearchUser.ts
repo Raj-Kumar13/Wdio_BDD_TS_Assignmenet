@@ -1,4 +1,4 @@
-import {Given,When,Then} from '@cucumber/cucumber'
+import { Given, When, Then } from '@cucumber/cucumber'
 import AdminPage from '../pageobjects/AdminPage';
 import Data from '../TestData/Data.json'
 When("After Landing on Dashboard page click on ADMIN button on the menu bar", async () => {
@@ -22,7 +22,7 @@ When("click on reset button", async () => {
     await AdminPage.clickResetButton();
 
 })
-Then("UserName and EmployeeName element should be empty", async () =>{
+Then("UserName and EmployeeName element should be empty", async () => {
     await expect(AdminPage.systemUserUsernameElement.getText()).not.toBeExisting()
     await expect(AdminPage.systemUserEmployeeNameElement.getText()).not.toBeExisting()
 })

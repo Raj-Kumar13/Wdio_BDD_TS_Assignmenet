@@ -1,4 +1,6 @@
-import  { deleteDirectory } from "./features/Utils/utils";
+//import  { deleteDirectory } from "./features/Utils/utils";
+import report from  '@wdio/allure-reporter'
+import utils from './features/Utils/utils';
 
 export const config: WebdriverIO.Config = {
     //
@@ -185,8 +187,8 @@ export const config: WebdriverIO.Config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      */
      onPrepare: function (config, capabilities) {
-        // utils.deleteDirectory("allure-result")
-        deleteDirectory("allure-result")
+         utils.deleteDirectory("allure-results")
+       // deleteDirectory("allure-result")
      },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
@@ -285,8 +287,11 @@ export const config: WebdriverIO.Config = {
      * @param {String}                   uri      path to feature file
      * @param {GherkinDocument.IFeature} feature  Cucumber feature object
      */
-     //afterFeature: function (uri, feature) {
-     //},
+     afterFeature: function (uri, feature) {
+        report.addEnvironment ("BROWSER","CHROME")
+        report.addEnvironment("ENV URL","https://opensource-demo.orangehrmlive.com/")
+        report.addEnvironment("Platform",process.platform)
+    },
     
     /**
      * Runs after a WebdriverIO command gets executed

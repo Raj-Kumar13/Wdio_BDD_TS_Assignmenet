@@ -1,38 +1,38 @@
 
-import {addLogs} from '../Utils/Commands'
-class LoginPage{
-    async openPage(url:string){
+import { addLogs } from '../Utils/Commands'
+class LoginPage {
+    async openPage(url: string) {
         await browser.url(url);
         addLogs(`landing URL : ${url}`)
         await browser.maximizeWindow();
         addLogs("maximize Window")
     }
 
-    get loginPanelHeaderElement(){
+    get loginPanelHeaderElement() {
         return $("#logInPanelHeading")
     }
 
-    get userNameElement(){
+    get userNameElement() {
         return $("//div[@class='textInputContainer']/input[@name='txtUsername']");
     }
-    get passwordElement(){
+    get passwordElement() {
         return $("//div[@class='textInputContainer']/input[@name='txtPassword']");
     }
 
-    async enterCredintials(credintials:{UserName:string,Password:any}){
+    async enterCredintials(credintials: { UserName: string, Password: any }) {
         await this.userNameElement.setValue(credintials.UserName);
         addLogs(`Entered User Name Value : ${credintials.UserName}`)
         await this.passwordElement.setValue(credintials.Password);
         addLogs(`Entered Password Value : ${credintials.Password}`)
     }
 
-    get loginButtonElement(){
+    get loginButtonElement() {
         return $("#divLoginButton>#btnLogin");
     }
-    async clickLoginButton(){
+    async clickLoginButton() {
         await this.loginButtonElement.click();
         addLogs(`Clicked login Button element value : ${await this.loginButtonElement.selector}`)
     }
-    
+
 }
 export default new LoginPage;
