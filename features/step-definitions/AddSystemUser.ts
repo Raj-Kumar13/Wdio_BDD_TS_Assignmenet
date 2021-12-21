@@ -1,4 +1,4 @@
-import {Given,Then,When} from '@cucumber/cucumber'
+import { Given, Then, When } from '@cucumber/cucumber'
 import AdminPage from '../pageobjects/AdminPage';
 import faker from 'faker'
 import Data from "../TestData/Data.json"
@@ -9,7 +9,7 @@ Then("Should be navigated to {string}", async (header) => {
     await expect(AdminPage.addUserHeaderElement).toHaveTextContaining(header);
 })
 When("fill the Required Elements Like User Role,Employee Name,Username,Status,Password,Confirm Password", async () => {
-    await AdminPage.addUserDetails(Data.addUser,faker.internet.userName())
+    await AdminPage.addUserDetails(Data.addUser, faker.internet.userName())
 })
 When("click submit button", async () => {
     await AdminPage.clickSubmitButton()

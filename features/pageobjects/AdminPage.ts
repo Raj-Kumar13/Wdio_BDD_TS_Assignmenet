@@ -1,7 +1,5 @@
-import Data from "../TestData/Data.json"
-import faker from 'faker'
-import report from  '@wdio/allure-reporter'
-import {addLogs} from "../Utils/Commands"
+
+import { addLogs } from "../Utils/Commands"
 class AdminPage {
 
     get adminButton() {
@@ -9,7 +7,7 @@ class AdminPage {
     }
     async clickAdminButton() {
         await this.adminButton.click()
-       addLogs(`Clicked on Admin button Element value : ${await this.adminButton.selector}`)
+        addLogs(`Clicked on Admin button Element value : ${await this.adminButton.selector}`)
     }
     get systemUserUsernameElement() {
         return $("#searchSystemUser_userName")
@@ -24,15 +22,15 @@ class AdminPage {
         return $("#searchSystemUser_status")
     }
 
-    async enterDetails(searchUser:{Username:string,UserRole:string,EmployeeName:string,status:string}) {
-        await this.systemUserUsernameElement.setValue(searchUser.Username );
-       addLogs(`Entered User name value : ${searchUser.Username}`)
-        await this.systemUserUserRoleElement.selectByVisibleText(searchUser.UserRole );
-       addLogs(`Selected User Role Dropdown value : ${searchUser.UserRole}`)
-        await this.systemUserEmployeeNameElement.setValue(searchUser.EmployeeName );
-       addLogs(`Entered Employee name value : ${searchUser.EmployeeName}`)
-        await this.systemUserStatus.selectByVisibleText(searchUser.status );
-       addLogs(`selected Status Dropdown value : ${searchUser.status}`)
+    async enterDetails(searchUser: { Username: string, UserRole: string, EmployeeName: string, status: string }) {
+        await this.systemUserUsernameElement.setValue(searchUser.Username);
+        addLogs(`Entered User name value : ${searchUser.Username}`)
+        await this.systemUserUserRoleElement.selectByVisibleText(searchUser.UserRole);
+        addLogs(`Selected User Role Dropdown value : ${searchUser.UserRole}`)
+        await this.systemUserEmployeeNameElement.setValue(searchUser.EmployeeName);
+        addLogs(`Entered Employee name value : ${searchUser.EmployeeName}`)
+        await this.systemUserStatus.selectByVisibleText(searchUser.status);
+        addLogs(`selected Status Dropdown value : ${searchUser.status}`)
 
     }
     get searchElement() {
@@ -97,20 +95,20 @@ class AdminPage {
         return $("#btnSave")
     }
 
-    async addUserDetails(addUser:{userRole:string,EmployeeName:string,Status:string,Password:any},userName:string) {
+    async addUserDetails(addUser: { userRole: string, EmployeeName: string, Status: string, Password: any }, userName: string) {
         await this.addUserUserRoleElement.click()
-       addLogs(`Clicked Add Button ${await this.addUserUserRoleElement.selector}`)
-        await this.addUserUserRoleElement.selectByVisibleText(addUser.userRole )
-       addLogs(`select Dropdown by options dispalyed : ${addUser.userRole}`)
-        await this.addUserEmployeeNameElement.setValue(addUser.EmployeeName )
+        addLogs(`Clicked Add Button ${await this.addUserUserRoleElement.selector}`)
+        await this.addUserUserRoleElement.selectByVisibleText(addUser.userRole)
+        addLogs(`select Dropdown by options dispalyed : ${addUser.userRole}`)
+        await this.addUserEmployeeNameElement.setValue(addUser.EmployeeName)
         addLogs(`Entered Employee Name value : ${addUser.EmployeeName}`)
-        await this.addUserUsername.setValue(userName )
+        await this.addUserUsername.setValue(userName)
         addLogs(`Entered User Name value : ${userName}`)
-        await this.addUserStatus.selectByVisibleText(addUser.Status )
+        await this.addUserStatus.selectByVisibleText(addUser.Status)
         addLogs(`seleted user status value : ${addUser.Status}`)
-        await this.addUserPassword.setValue(addUser.Password );
+        await this.addUserPassword.setValue(addUser.Password);
         addLogs(`Entered password value : ${addUser.Password}`)
-        await this.addUserConfirmPassword.setValue(addUser.Password )
+        await this.addUserConfirmPassword.setValue(addUser.Password)
         addLogs(`Entered confirm Password value : ${addUser.Password}`)
     }
 
@@ -119,8 +117,8 @@ class AdminPage {
     }
 
     get successfullySavedMassageElement() {
-       // return $("//div[@class='message success fadable']");
-       return $("//div[contains(text(),'Successfully Saved') and @class='message success fadable']")
+        // return $("//div[@class='message success fadable']");
+        return $("//div[contains(text(),'Successfully Saved') and @class='message success fadable']")
     }
     get systemUserHeaderElement() {
         return $('//a[@title="Hide Options"]')

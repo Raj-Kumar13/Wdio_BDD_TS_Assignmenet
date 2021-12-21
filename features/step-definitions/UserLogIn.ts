@@ -2,9 +2,9 @@ import { Given, When, Then } from "@cucumber/cucumber";
 import AdminPage from "../pageobjects/AdminPage";
 import LeavesPage from "../pageobjects/LeavesPage";
 import LoginPage from "../pageobjects/LoginPage";
-import PIMPage from "../pageobjects/PIMPage";
+
 import Data from "../TestData/Data.json";
-import faker from 'faker'
+
 
 
 

@@ -1,35 +1,33 @@
 {
-    "credentials":{
-    "UserName": "Admin",
-    "Password": "admin123"
+    "credentials": {
+        "UserName": "Admin",
+        "Password": "admin123"
     },
-    "searchUser":{
-        "Username":"Admin",
-        "UserRole":"Admin",
-        "EmployeeName":"Ann Neon Moon",
-        "status":"Enabled"
+    "searchUser": {
+        "Username": "Admin",
+        "UserRole": "Admin",
+        "EmployeeName": "Ann Neon Moon",
+        "status": "Enabled"
     },
-    "addUser":{
-        "userRole":"ESS",
-        "EmployeeName":"Orange Test",
-        
-        "Status":"Enabled",
-        "Password":"mohan123"
+    "addUser": {
+        "userRole": "ESS",
+        "EmployeeName": "Orange Test",
+        "Status": "Enabled",
+        "Password": "mohan123"
     },
-    "createLoginDetails":{
-        "name":"mohan",
-        "key":"value",
-        "value":"Enabled"
+    "createLoginDetails": {
+        "name": "mohan",
+        "key": "value",
+        "value": "Enabled"
     },
-    "LeaveDates":{
-        "From":"2021-12-10",
-        "To":{
-            "month":"Dec",
-            "year":"2021",
-            "day":"17"
+    "LeaveDates": {
+        "From": "2021-12-10",
+        "To": {
+            "month": "Dec",
+            "year": "2021",
+            "day": "17"
         },
-        "EmployeeName":"Admin A",
-        "subUnit":"Administration"
+        "EmployeeName": "Admin A",
+        "subUnit": "Administration"
     }
-
 }
