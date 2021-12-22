@@ -41,10 +41,7 @@ class PIMPage {
         return $("#photofile")
     }
     async uploadFile(fileDirectoryPath: string) {
-        //console.log("-------------------------------------------------------------------"+path)
-        // const filePath = path.join(__dirname,"../TestData/demo.jpg")    
-        // const remoteFilePath = await browser.uploadFile(filePath)
-        // addLogs(`File to be Uploaded value : ${remoteFilePath}`)
+        
         await this.photoUploadElemnet.setValue(await uploadFileDetails(fileDirectoryPath));
 
         addLogs(`File to be Uploaded value : ${await uploadFileDetails(fileDirectoryPath)}`)

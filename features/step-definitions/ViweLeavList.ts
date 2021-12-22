@@ -9,7 +9,7 @@ Then("should be land on {string} page", async (urlElement) => {
 })
 When("fill the required details from, To,Show Leave with Status,Employee sub unit", async () => {
     await LeavesPage.fillDates(Data.LeaveDates)
-    // await LeavesPage.clickDateElement()
+    
     await LeavesPage.clickStatusCheckBox()
     await LeavesPage.setEmployeeName(Data.LeaveDates.EmployeeName)
     await LeavesPage.setSubUnit(Data.LeaveDates.subUnit)
