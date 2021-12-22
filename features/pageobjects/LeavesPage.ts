@@ -31,11 +31,11 @@ class LeavesPage {
         await this.monthElement.selectByVisibleText(LeaveDates.To.month)
         await this.yearElement.selectByVisibleText(LeaveDates.To.year)
         await this.dayElement.click()
-        //await this.toDateElement.setValue(toDate)   
+    
     }
 
     get showLeaveWithStatusCheckBox() {
-        //return $("#leaveList_chkSearchFilter_3")
+        
         return $("#leaveList_chkSearchFilter_checkboxgroup_allcheck")
     }
     async clickStatusCheckBox() {
