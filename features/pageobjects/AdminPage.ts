@@ -117,7 +117,6 @@ class AdminPage {
     }
 
     get successfullySavedMassageElement() {
-        // return $("//div[@class='message success fadable']");
         return $("//div[contains(text(),'Successfully Saved') and @class='message success fadable']")
     }
     get systemUserHeaderElement() {
